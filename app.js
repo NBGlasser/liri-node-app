@@ -26,17 +26,19 @@ if(answers.command === "spotify-this-song"){
           return console.log('Error occurred: ' + err);
         }
        
-      console.log(data.tracks.items[0].name);
-      console.log(data.tracks.items[0].artists[0].name) 
+      console.log("Song Name: " + data.tracks.items[0].name);
+      console.log("Artist: " + data.tracks.items[0].artists[0].name) 
+      console.log("Spotify Link: " + data.tracks.items[0].album.external_urls.spotify)
       });
       
 }
 else if(answers.command === "concert-this"){
-    console.log(typeof(answers.parameters))
 var queryUrl = "https://rest.bandsintown.com/artists/" + answers.parameters + "/events?app_id=codingbootcamp";
 axios.get(queryUrl).then(
     function(response) {
-      console.log(response.data);
+      console.log("Next Performance: " + response.data[0].venue.name);
+      console.log("Performance Location: " + response.data[0].venue.city + ", " + response.data[0].venue.region);
+      console.log("Performance Date: " + response.data[0].datetime);
     }
   );
 }
@@ -47,11 +49,11 @@ axios.get(queryUrl).then(
       console.log("Title: " + response.data.Title);
       console.log("Release Year:" + response.data.Year);
       console.log("Rating: " + response.data.Rated);
-      console.log(response.data.Ratings[1].Value);
-      console.log(response.data.Country);
-      console.log(response.data.Language);
-      console.log(response.data.Plot);
-      console.log(response.data.Actors);
+      console.log("Average Review Score: " + response.data.Ratings[1].Value);
+      console.log("Country: " + response.data.Country);
+      console.log("Language: " + response.data.Language);
+      console.log("Plot Summary: " + response.data.Plot);
+      console.log("Actors: " + response.data.Actors);
     }
   );
 }
@@ -72,14 +74,19 @@ else if (answers.command === "do-what-it-says"){
                   return console.log('Error occurred: ' + err);
                 }
                
-              console.log(data.tracks.items[0]); 
+                console.log("Song Name: " + data.tracks.items[0].name);
+                console.log("Artist: " + data.tracks.items[0].artists[0].name) 
+                console.log("Spotify Link: " + data.tracks.items[0].album.external_urls.spotify)
               });
             }
             else if(dataArr[0] === "concert-this"){
             var queryURL = "https://rest.bandsintown.com/artists/" + paramArr.toString() + "/events?app_id=codingbootcamp";
             axios.get(queryUrl).then(
                 function(response) {
-                  console.log(response.data);
+                  console.log("Next Performance: " + response.data[0].venue.name);
+                  console.log("Performance Location: " + response.data[0].venue.city + ", " + response.data[0].venue.region);
+                  console.log("Performance Date: " + response.data[0].datetime);
+                  
                 }
               );
             }
@@ -90,11 +97,11 @@ else if (answers.command === "do-what-it-says"){
                   console.log("Title: " + response.data.Title);
                   console.log("Release Year:" + response.data.Year);
                   console.log("Rating: " + response.data.Rated);
-                  console.log(response.data.Ratings[1].Value);
-                  console.log(response.data.Country);
-                  console.log(response.data.Language);
-                  console.log(response.data.Plot);
-                  console.log(response.data.Actors);
+                  console.log("Average Review Score: " + response.data.Ratings[1].Value);
+                  console.log("Country: " + response.data.Country);
+                  console.log("Language: " + response.data.Language);
+                  console.log("Plot Summary: " + response.data.Plot);
+                  console.log("Actors: " + response.data.Actors);
                 }
               );
             }
